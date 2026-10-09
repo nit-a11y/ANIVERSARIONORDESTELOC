@@ -1,0 +1,6 @@
+{
+  "name": "Baile Nordeste 15 Anos | Convite & Confraternização",
+  "description": "Experiência interativa de celebração dos 15 anos da Nordeste Locações: revelação surpresa da festa na praia, confirmação de presença (RSVP), passaporte digital e mural da equipe.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

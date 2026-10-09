@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --wine: #47091b;
+    --red: #d81932;
+    --gold: #e9c582;
+    --cream: #fff2dc;
+    --cyan: #3ed5cc;
+    --yellow: #ffce52;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-righteous {
+  font-family: 'Righteous', sans-serif;
+}
+
+.font-dm {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Curtain textures & luxury gradients */
+.curtain-texture {
+  background: repeating-linear-gradient(
+    90deg,
+    #3c0516 0%,
+    #7a112a 12%,
+    #2a0313 22%,
+    #6f0e27 35%,
+    #300414 48%,
+    #7a112a 60%,
+    #240210 75%,
+    #660a22 88%,
+    #3c0516 100%
+  );
+  box-shadow: inset 0 0 80px #12000a, 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.curtain-trim {
+  background: linear-gradient(180deg, #e3bd77, #835322 45%, #fce29d 75%, #a46d2a);
+}
+
+.luxury-stage-bg {
+  background: 
+    radial-gradient(ellipse at 50% 25%, rgba(155, 78, 74, 0.45), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 10%, rgba(255, 255, 255, 0.03) 10.2% 10.5%, transparent 10.7% 20%),
+    linear-gradient(145deg, #260611, #5c0d23 55%, #1d040d);
+}
+
+.tropical-beach-bg {
+  background: linear-gradient(
+    180deg,
+    #ffae6b 0%,
+    #fedb9b 30%,
+    #4ed7ce 31%,
+    #0b8fa8 68%,
+    #f8d59c 69%,
+    #f2b96f 100%
+  );
+}
+
+@keyframes floatGift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2.5deg);
+  }
+}
+
+.animate-float-gift {
+  animation: floatGift 3.2s ease-in-out infinite;
+}
+
+@keyframes slowPulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-sun {
+  animation: slowPulse 5s ease-in-out infinite;
+}
+
+@keyframes swayPalm {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.animate-sway {
+  animation: swayPalm 6s ease-in-out infinite alternate;
+}
