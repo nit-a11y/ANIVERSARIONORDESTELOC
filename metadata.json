@@ -1,6 +1,5 @@
 {
-  "name": "Baile Nordeste 15 Anos | Convite & Confraternização",
-  "description": "Experiência interativa de celebração dos 15 anos da Nordeste Locações: revelação surpresa da festa na praia, confirmação de presença (RSVP), passaporte digital e mural da equipe.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "name": "Nordeste Loc Fest · 15 anos",
+  "description": "27/11/2026, a partir das 12h30. Barraca Gran Royal, Praia do Futuro, Fortaleza/CE. Convite e orientações de vestimenta.",
+  "requestFramePermissions": []
 }
