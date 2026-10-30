@@ -9,7 +9,7 @@ a { color: inherit; text-decoration: none; }
 button:focus-visible, a:focus-visible { outline: 3px solid #fff5dc; outline-offset: 6px; }
 ::selection { background: #ff8a6d; color: #133f50; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.festival-scene { position: relative; isolation: isolate; container-type: inline-size; width: min(100%, 1100px); min-height: 0; margin-inline: auto; overflow: hidden; padding-bottom: 20.7%; background: #075778; background-image: url('./assets/images/nordeste-loc-fest-praia.png'); background-position: center; background-size: 100% 100%; }
+.festival-scene { position: relative; isolation: isolate; container-type: inline-size; width: 100%; min-height: 0; margin-inline: auto; overflow: hidden; padding-bottom: 20.7%; background: #075778; background-image: url('./assets/images/nordeste-loc-fest-praia.png'); background-position: center; background-size: 100% 100%; }
 .festival-scene::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 18%, #001b3321 35%, #00162b17 65%, transparent 83%); z-index: -1; pointer-events: none; }
 .festival-scene::after { content: ''; position: absolute; right: -6%; bottom: 9%; width: 60%; height: 35%; z-index: -1; pointer-events: none; background: radial-gradient(ellipse, #ffb66a24, transparent 68%); animation: sunset-glow 9s ease-in-out infinite alternate; }
 .content-width { width: 88.3%; margin-inline: auto; }
@@ -67,7 +67,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff5dc; outline-offs
 .star-divider.reveal { transition-delay: .22s; }
 @keyframes sunset-glow { from { opacity: .35; } to { opacity: 1; } }
 @keyframes star-breathe { 0%, 100% { opacity: .8; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
-@media (min-width: 1101px) { .festival-scene { padding-bottom: 228px; } }
 @media (max-width: 600px) {
   .festival-scene { background-size: auto 100%; padding-bottom: 35cqw; }
   .welcome-section { padding-top: 25cqw; }
