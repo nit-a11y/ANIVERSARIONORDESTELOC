@@ -7,7 +7,6 @@ export const event = {
   dressCode: 'O clima é de celebração! Escolha um look confortável e adequado para aproveitar esse momento.',
   prohibitedClothing: [
     'Camisas de partidos políticos ou de times de futebol.',
-    'Roupas de banho, incluindo biquínis e maiôs.',
-    'Saídas de praia.',
+    'Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.',
   ],
 } as const;

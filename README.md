@@ -12,8 +12,7 @@ Interface do convite da celebração dos 15 anos da **Nordeste Locações**, con
 Não será permitido o uso de:
 
 - Camisas de partidos políticos ou de times de futebol.
-- Roupas de banho, incluindo biquínis e maiôs.
-- Saídas de praia.
+- Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.
 
 Acompanhantes, transporte, alimentação, atrações e horário de encerramento não são apresentados como confirmados.
 
