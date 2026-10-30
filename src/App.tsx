@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { CalendarDays, Clock3, MapPin, Shirt, X } from 'lucide-react';
 import { OfficialMark } from './components/OfficialMark';
+import { GradientFrame } from './components/GradientFrame';
 import { event } from './event';
 import { downloadCalendarInvite } from './utils/calendar';
-
-function EdgeDecoration({ bottom = false }: { bottom?: boolean }) {
-  return <div className={`edge-decoration ${bottom ? 'edge-bottom' : 'edge-top'}`} aria-hidden="true"><div className="edge-ribbon" /><svg viewBox="0 0 941 85" preserveAspectRatio="none"><path d="M50 -20 L77 70 Q79 79 90 79 H138 Q152 79 148 65 L121 -20 M200 -20 V69 Q200 79 212 79 H339 Q354 79 354 64 V-20 M305 -20 Q520 175 766 -20 M753 -20 L729 65 Q724 79 741 79 H785 Q798 79 801 65 L832 -20" /></svg></div>;
-}
 
 export default function App() {
   const scene = useRef<HTMLElement>(null);
@@ -32,7 +29,7 @@ export default function App() {
   }
   return (
     <main ref={scene} className="festival-scene" aria-labelledby="invitation-title">
-      <EdgeDecoration />
+      <GradientFrame />
       <section className="welcome-section" aria-labelledby="invitation-title">
         <h1 id="invitation-title" className="official-heading reveal"><span className="visually-hidden">{event.name} · {event.edition}. É tempo de celebrar!</span><OfficialMark /></h1>
         <p className="welcome-message reveal">Você é nosso convidado para viver<br className="desktop-break" /> esse momento especial com a gente!</p>
@@ -75,7 +72,7 @@ export default function App() {
         <svg className="signature-stroke" viewBox="0 0 400 35" aria-hidden="true"><path d="M10 27 Q190 -3 389 11 M26 30 Q208 5 373 13 M57 26 Q220 10 341 15" /></svg>
         <OfficialMark company />
       </section>
-      <EdgeDecoration bottom />
+      <GradientFrame bottom />
     </main>
   );
 }
