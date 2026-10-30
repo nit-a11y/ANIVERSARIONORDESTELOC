@@ -68,7 +68,20 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff5dc; outline-offs
 @keyframes sunset-glow { from { opacity: .35; } to { opacity: 1; } }
 @keyframes star-breathe { 0%, 100% { opacity: .8; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
 @media (max-width: 600px) {
-  .festival-scene { padding-bottom: 35cqw; }
+  .festival-scene {
+    padding-bottom: 35cqw;
+    background-color: #225c68;
+    background-image:
+      radial-gradient(ellipse 100% 50% at -18% 100%, #b83b17bd 0%, #bf431b50 48%, transparent 85%),
+      radial-gradient(ellipse 110% 35% at 104% 78%, #ffa182f0 0%, #ffa18280 40%, transparent 80%),
+      radial-gradient(ellipse 125% 42% at -20% 62%, #bd421de6 0%, #bd421d70 45%, transparent 83%),
+      radial-gradient(ellipse 105% 45% at 100% 3%, #006b94 2%, #006b9480 52%, transparent 92%),
+      linear-gradient(158deg, #23575d 0%, #176a81 31%, #768787 50%, #d18976 70%, #ff9b7f 100%);
+  }
+  .festival-scene::after { right: -20%; bottom: 13%; width: 110%; height: 48%; background: radial-gradient(ellipse, #ffa78330, transparent 74%); }
+  .gradient-frame { height: 8.5cqw; }
+  .gradient-frame-ribbon { top: -2cqw; height: 6.2cqw; border-radius: 0 0 2cqw 2cqw; background: radial-gradient(ellipse at 58% 0%, #ffb29a, transparent 62%), radial-gradient(ellipse at 20% 85%, #b9471fe6, transparent 53%), radial-gradient(ellipse at 83% 100%, #006b95, transparent 58%), linear-gradient(110deg, #176579, #d58a72 49%, #277c94 80%, #ff9d81); }
+  .gradient-frame svg { opacity: .65; }
   .welcome-section { padding-top: 25cqw; }
   .official-heading { width: 92%; }
   .welcome-message { font-size: 4.7cqw; line-height: 1.45; margin-top: 7cqw; padding-inline: 5cqw; letter-spacing: .01em; }
