@@ -1,25 +1,36 @@
 # Nordeste Loc Fest · 15 anos
 
-Convite digital da celebração dos 15 anos da **Nordeste Locações**. A página exibe a arte final fornecida pela organização, sem recriar ou alterar seu visual.
+Interface do convite da celebração dos 15 anos da **Nordeste Locações**, construída em React e TypeScript a partir da arte oficial. A composição preserva o fundo de praia ao pôr do sol, as marcas, os cartões translúcidos e o destaque coral.
 
-![Convite final](src/assets/images/nordeste-loc-fest-convite-final.png)
-
-## Evento
+## Evento e orientações
 
 - **Data:** 27/11/2026, sexta-feira.
 - **Horário:** a partir das 12h30.
 - **Local:** Barraca Gran Royal, Praia do Futuro, Fortaleza/CE.
 - **Dress code:** look confortável e adequado à celebração.
 
-Não será permitido o uso de camisas de partidos políticos ou de times de futebol, roupas de banho (incluindo biquínis e maiôs) ou saídas de praia.
+Não será permitido o uso de:
+
+- Camisas de partidos políticos ou de times de futebol.
+- Roupas de banho, incluindo biquínis e maiôs.
+- Saídas de praia.
+
+Acompanhantes, transporte, alimentação, atrações e horário de encerramento não são apresentados como confirmados.
 
 ## Interface
 
-A arte aparece inteira, sem cortes ou distorções, com largura máxima de 941 pixels e adaptação proporcional em telas menores. O bloco de localização é clicável e abre uma busca pelo estabelecimento no mapa. As informações também estão disponíveis em texto para leitores de tela.
+- Seções reais em HTML: apresentação, informações do evento, dress code e mensagem de encerramento.
+- Textos selecionáveis e layout responsivo; no celular, o local ocupa uma linha própria para melhorar a leitura.
+- Marcas preservadas da arte oficial, exibidas separadamente dos textos e cartões.
+- Ícones vetoriais, cartões translúcidos, contornos e assinatura tipográfica.
+- Animações de entrada ao rolar, brilho suave do pôr do sol, pulsação do ornamento e efeitos de interação.
+- Respeito à preferência de movimento reduzido do dispositivo.
+- O cartão da **data** baixa um arquivo `.ics` para adicionar o evento à agenda, com início às 12h30 de Fortaleza e sem inventar horário de término.
+- O cartão do **local** abre uma busca pelo estabelecimento no mapa.
 
-Não há formulário de presença, mural, playlist, painel, cabeçalho ou rodapé adicional. A página não coleta dados nem utiliza o armazenamento local do navegador. A exibição do convite não depende de fontes externas.
+Não há formulário de presença, mural, playlist ou painel de dados. A página não coleta dados nem acessa o armazenamento local do navegador.
 
-## Desenvolvimento
+## Executar localmente
 
 Com Bun, usando o lockfile versionado:
 
@@ -28,14 +39,14 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
-Ou com Node.js e npm compatíveis com a versão instalada do Vite:
+Ou com Node.js e npm compatíveis com o Vite instalado:
 
 ```sh
 npm install
 npm run dev
 ```
 
-Acesse a URL informada no terminal. A porta inicial é 3000; se estiver ocupada, o Vite usa a próxima disponível. Não são necessários arquivo `.env` ou chaves de API.
+Acesse o endereço informado no terminal. A porta inicial é 3000; se estiver ocupada, o Vite utiliza a próxima disponível. Não são necessários arquivo `.env` ou chaves de API.
 
 ## Comandos
 
@@ -51,15 +62,24 @@ Com npm, substitua `bun run` por `npm run`.
 
 ## Arquivos principais
 
-- `src/assets/images/nordeste-loc-fest-convite-final.png`: arte final exibida na página.
-- `src/App.tsx`: convite, texto acessível e link do mapa.
-- `src/index.css`: dimensionamento e posicionamento da área clicável.
-- `src/event.ts`: informações acessíveis e destino do mapa.
-- `index.html`: título e descrição para compartilhamento.
+| Arquivo | Conteúdo |
+| --- | --- |
+| `src/App.tsx` | Seções, cartões e animações de entrada. |
+| `src/index.css` | Layout, transparências, tipografia e animações. |
+| `src/components/OfficialMark.tsx` | Exibição isolada das marcas oficiais da arte. |
+| `src/utils/calendar.ts` | Geração do convite de calendário. |
+| `src/event.ts` | Informações reais, regras e link do mapa. |
+| `src/assets/images/nordeste-loc-fest-praia.png` | Fundo de praia, separado do conteúdo. |
+| `src/assets/images/nordeste-loc-fest-convite-final.png` | Referência original e origem das marcas. |
+| `index.html` | Metadados e carregamento das fontes. |
 
-Como os textos visuais fazem parte da imagem, mudanças de data, local ou regras exigem uma nova arte. Atualize também `src/event.ts`, o texto acessível e os metadados. Se a composição da arte mudar, ajuste a área clicável do mapa em `src/index.css`.
+A arte completa não é usada como interface. O fundo e as marcas são recursos gráficos; cartões, textos, ícones, regras e ornamentos são renderizados separadamente.
 
-`BAILE_NORDESTE_15_ANOS.html` é uma versão estática com a mesma arte. Não entra automaticamente no build do React; mantenha a imagem no caminho relativo indicado se for distribuí-la separadamente.
+O fundo foi preparado com a ferramenta integrada ImageGen a partir da referência. Prompt de edição: remover textos, logotipos, cartões e ornamentos, preservar a composição e as cores da praia ao pôr do sol e reconstruir o céu vazio para receber conteúdo HTML. A imagem está salva no projeto e a referência permanece preservada.
+
+Ao alterar o evento, revise também a data em `src/utils/calendar.ts`, o atributo `dateTime` em `src/App.tsx`, os metadados e as marcas que contêm o número de anos. A versão `BAILE_NORDESTE_15_ANOS.html` permanece como reprodução estática da arte anterior e não é a entrada da aplicação React.
+
+As fontes DM Sans e Allura são carregadas pelo Google Fonts. O mapa e as fontes externas dependem de internet; fontes locais de fallback são usadas quando necessário.
 
 ## Publicação
 
@@ -68,4 +88,4 @@ bun run lint
 bun run build
 ```
 
-Publique o conteúdo de `dist/` em uma hospedagem estática. Se usar um subdiretório, ajuste `base` em `vite.config.ts` antes de gerar o build. O mapa depende de conexão com a internet.
+Publique `dist/` em uma hospedagem estática. Para hospedar em um subdiretório, configure `base` em `vite.config.ts` antes de gerar o build.

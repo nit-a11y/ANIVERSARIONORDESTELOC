@@ -1,41 +1,81 @@
-import invitation from './assets/images/nordeste-loc-fest-convite-final.png';
+import { useEffect, useRef, useState } from 'react';
+import { CalendarDays, Clock3, MapPin, Shirt, X } from 'lucide-react';
+import { OfficialMark } from './components/OfficialMark';
 import { event } from './event';
+import { downloadCalendarInvite } from './utils/calendar';
+
+function EdgeDecoration({ bottom = false }: { bottom?: boolean }) {
+  return <div className={`edge-decoration ${bottom ? 'edge-bottom' : 'edge-top'}`} aria-hidden="true"><div className="edge-ribbon" /><svg viewBox="0 0 941 85" preserveAspectRatio="none"><path d="M50 -20 L77 70 Q79 79 90 79 H138 Q152 79 148 65 L121 -20 M200 -20 V69 Q200 79 212 79 H339 Q354 79 354 64 V-20 M305 -20 Q520 175 766 -20 M753 -20 L729 65 Q724 79 741 79 H785 Q798 79 801 65 L832 -20" /></svg></div>;
+}
 
 export default function App() {
+  const scene = useRef<HTMLElement>(null);
+  const [calendarMessage, setCalendarMessage] = useState('');
+  useEffect(() => {
+    const root = scene.current;
+    if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('motion-ready');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    root.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+  function addCalendar() {
+    downloadCalendarInvite();
+    setCalendarMessage('Convite baixado. Abra o arquivo para adicionar à sua agenda.');
+  }
   return (
-    <main className="invitation-page" aria-labelledby="invitation-title">
-      <figure className="invitation">
-        <img
-          className="invitation-art"
-          src={invitation}
-          width={941}
-          height={1672}
-          alt=""
-          fetchPriority="high"
-        />
-        <a
-          className="invitation-map"
-          href={event.mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Como chegar à ${event.venue}, ${event.address} (abre em nova aba)`}
-          title="Abrir localização da Barraca Gran Royal"
-        />
-        <figcaption className="visually-hidden">
-          <h1 id="invitation-title">{event.name} · {event.edition}</h1>
-          <p>É tempo de celebrar!</p>
-          <p>Você é nosso convidado para viver esse momento especial com a gente!</p>
-          <h2>Data, horário e local</h2>
-          <p><time dateTime="2026-11-27">{event.dateLabel}</time>, {event.weekday}, a partir das {event.time}.</p>
-          <p>{event.venue}. {event.address}.</p>
-          <h2>Dress code</h2>
+    <main ref={scene} className="festival-scene" aria-labelledby="invitation-title">
+      <EdgeDecoration />
+      <section className="welcome-section" aria-labelledby="invitation-title">
+        <h1 id="invitation-title" className="official-heading reveal"><span className="visually-hidden">{event.name} · {event.edition}. É tempo de celebrar!</span><OfficialMark /></h1>
+        <p className="welcome-message reveal">Você é nosso convidado para viver<br className="desktop-break" /> esse momento especial com a gente!</p>
+        <div className="star-divider reveal" aria-hidden="true"><span /><b>✦</b><span /></div>
+      </section>
+      <section id="informacoes" className="event-section content-width reveal" aria-label="Data, horário e local do evento">
+        <button className="event-card calendar-card" onClick={addCalendar} title="Adicionar à minha agenda" aria-label={`Data: ${event.date}, ${event.weekday}. Adicionar à minha agenda.`}>
+          <span className="fact-icon"><CalendarDays /></span>
+          <span className="fact-label">Data</span>
+          <time dateTime="2026-11-27" className="fact-main">{event.date}</time>
+          <span className="fact-secondary fact-weekday">{event.weekday}</span>
+          <span className="card-hint">Adicionar à agenda ↗</span>
+        </button>
+        <article className="event-card time-card">
+          <span className="fact-icon"><Clock3 /></span>
+          <h2 className="fact-label">Horário</h2>
+          <p className="fact-secondary">A partir das</p>
+          <p className="fact-main">{event.time}</p>
+        </article>
+        <a className="event-card venue-card" href={event.mapsUrl} target="_blank" rel="noopener noreferrer" title="Abrir localização no mapa" aria-label={`${event.venue}. ${event.address}. Abrir mapa em nova aba.`}>
+          <span className="fact-icon"><MapPin /></span>
+          <span className="fact-label">Local</span>
+          <span className="fact-main">{event.venue}</span>
+          <span className="fact-secondary">Praia do Futuro,<br />Fortaleza/CE</span>
+          <span className="card-hint">Abrir localização ↗</span>
+        </a>
+      </section>
+      <p className="visually-hidden" role="status">{calendarMessage}</p>
+      <section id="dress-code" className="dress-section content-width reveal" aria-labelledby="dress-title">
+        <Shirt className="dress-icon" aria-hidden="true" />
+        <div className="dress-content">
+          <h2 id="dress-title">Dress code</h2>
           <p>{event.dressCode}</p>
-          <p>Não será permitido o uso de:</p>
-          <ul>{event.prohibitedClothing.map(rule => <li key={rule}>{rule}</li>)}</ul>
-          <p>Vista seu melhor sorriso e venha celebrar com a gente!</p>
-          <p>Nordeste Locações.</p>
-        </figcaption>
-      </figure>
+          <h3>Não será permitido o uso de:</h3>
+          <ul>{event.prohibitedClothing.map(rule => <li key={rule}><span className="prohibition-icon" aria-hidden="true"><X /></span><span>{rule}</span></li>)}</ul>
+        </div>
+      </section>
+      <section className="closing-section reveal" aria-label="Vamos celebrar">
+        <p>Vista seu melhor sorriso<br /><span>e venha celebrar com a gente!</span></p>
+        <svg className="signature-stroke" viewBox="0 0 400 35" aria-hidden="true"><path d="M10 27 Q190 -3 389 11 M26 30 Q208 5 373 13 M57 26 Q220 10 341 15" /></svg>
+        <OfficialMark company />
+      </section>
+      <EdgeDecoration bottom />
     </main>
   );
 }
