@@ -28,13 +28,13 @@ Horários transcritos da arte de programação fornecida pela organização. Aco
 ## Interface
 
 - Seções reais em HTML: apresentação, informações do evento, cronograma, dress code e mensagem de encerramento.
-- Textos selecionáveis e layout responsivo; no celular, o local ocupa uma linha própria para melhorar a leitura.
+- Identidade visual oficial preservada: degradê azul e coral, molduras, ícones, cartão arqueado da programação e assinatura manuscrita. Layout com largura máxima de 640 px e margens laterais de 20 px no celular.
 - Marcas preservadas da arte oficial, exibidas separadamente dos textos e cartões.
 - Ícones vetoriais, cartões translúcidos, contornos e assinatura tipográfica.
 - Animações de entrada ao rolar, brilho suave no fundo, pulsação do ornamento e efeitos de interação.
 - Respeito à preferência de movimento reduzido do dispositivo.
-- O cartão da **data** baixa um arquivo `.ics` para adicionar o evento à agenda, com início às 12h30 e encerramento às 18h30 de Fortaleza, conforme o cronograma.
-- O cartão do **local** abre uma busca pelo estabelecimento no mapa.
+- O cartão da **data** e o botão **Adicionar à agenda** baixam um arquivo `.ics` para adicionar o evento à agenda, com início às 12h30 e encerramento às 18h30 de Fortaleza, conforme o cronograma.
+- O cartão do **local** e o botão **Como chegar** abrem uma busca pelo estabelecimento no mapa. Os botões têm pelo menos 52 px de altura e rótulos sempre visíveis.
 
 Não há formulário de presença, mural, playlist ou painel de dados. A página não coleta dados nem acessa o armazenamento local do navegador.
 
@@ -67,6 +67,8 @@ Acesse o endereço informado no terminal. A porta inicial é 3000; se estiver oc
 | `bun run clean` | Limpeza de `dist/`, compatível com Windows. |
 
 Com npm, substitua `bun run` por `npm run`.
+
+Atalhos no início permitem ir diretamente às informações, à programação e ao dress code. A navegação respeita a preferência por movimento reduzido, com foco visível por teclado e alvos de toque de pelo menos 44 px.
 
 ## Arquivos principais
 

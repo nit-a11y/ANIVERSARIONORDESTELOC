@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CalendarDays, Clock3, MapPin, Shirt, X } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Clock3, MapPin, Music2, Shirt, X } from 'lucide-react';
 import { OfficialMark } from './components/OfficialMark';
 import { GradientFrame } from './components/GradientFrame';
 import { EventSchedule } from './components/EventSchedule';
@@ -36,13 +36,17 @@ export default function App() {
         <p className="welcome-message reveal">Você é nosso convidado para viver<br className="desktop-break" /> esse momento especial com a gente!</p>
         <div className="star-divider reveal" aria-hidden="true"><span /><b>✦</b><span /></div>
       </section>
+      <nav className="invitation-nav content-width" aria-label="Navegar pelo convite">
+        <a href="#informacoes"><CalendarDays aria-hidden="true" />O evento</a>
+        <a href="#cronograma"><Music2 aria-hidden="true" />Programação</a>
+        <a href="#dress-code"><Shirt aria-hidden="true" />O que vestir</a>
+      </nav>
       <section id="informacoes" className="event-section content-width reveal" aria-label="Data, horário e local do evento">
         <button className="event-card calendar-card" onClick={addCalendar} title="Adicionar à minha agenda" aria-label={`Data: ${event.date}, ${event.weekday}. Adicionar à minha agenda.`}>
           <span className="fact-icon"><CalendarDays /></span>
           <span className="fact-label">Data</span>
           <time dateTime="2026-11-27" className="fact-main">{event.date}</time>
           <span className="fact-secondary fact-weekday">{event.weekday}</span>
-          <span className="card-hint">Adicionar à agenda ↗</span>
         </button>
         <article className="event-card time-card">
           <span className="fact-icon"><Clock3 /></span>
@@ -54,11 +58,14 @@ export default function App() {
           <span className="fact-icon"><MapPin /></span>
           <span className="fact-label">Local</span>
           <span className="fact-main">{event.venue}</span>
-          <span className="fact-secondary">Praia do Futuro,<br />Fortaleza/CE</span>
-          <span className="card-hint">Abrir localização ↗</span>
+          <span className="fact-secondary">Praia do Futuro,{' '}<br />Fortaleza/CE</span>
         </a>
       </section>
-      <p className="visually-hidden" role="status">{calendarMessage}</p>
+      <div className="event-actions content-width">
+        <a className="action-button primary-action" href={event.mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Como chegar à Barraca Gran Royal (abre o mapa em nova aba)"><MapPin aria-hidden="true" />Como chegar<ArrowUpRight aria-hidden="true" /></a>
+        <button className="action-button secondary-action" type="button" onClick={addCalendar}><CalendarDays aria-hidden="true" />Adicionar à agenda</button>
+      </div>
+      <p className="calendar-message content-width" role="status">{calendarMessage}</p>
       <EventSchedule />
       <section id="dress-code" className="dress-section content-width reveal" aria-labelledby="dress-title">
         <Shirt className="dress-icon" aria-hidden="true" />
