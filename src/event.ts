@@ -10,3 +10,11 @@ export const event = {
     'Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.',
   ],
 } as const;
+
+// Cronograma transcrito da arte de programação fornecida pela organização.
+export const eventSchedule = [
+  { title: 'Almoço', time: '12h30 às 13h45', start: '12:30', end: '13:45', icon: 'lunch' },
+  { title: 'Cerimonial', time: '14h às 15h30', start: '14:00', end: '15:30', icon: 'ceremony' },
+  { title: 'Banda', time: '15h30 às 18h30', start: '15:30', end: '18:30', icon: 'music' },
+  { title: 'Encerramento', time: '18h30', start: '18:30', icon: 'closing' },
+] as const;

@@ -3,14 +3,14 @@ import artwork from '../assets/images/nordeste-loc-fest-convite-final.png';
 
 // Preserve os desenhos oficiais. O SVG isola apenas a marca clara da arte,
 // sem usar a imagem do convite como interface ou reproduzir os textos dos cartões.
-export function OfficialMark({ company = false }: { company?: boolean }) {
+export function OfficialMark({ company = false, festival = false }: { company?: boolean; festival?: boolean }) {
   const id = useId().replace(/:/g, '');
   return (
     <svg
       className={company ? 'company-mark' : 'anniversary-mark'}
-      viewBox={company ? '390 1383 165 88' : '66 218 824 151'}
+      viewBox={company ? '390 1383 165 88' : festival ? '66 218 390 151' : '66 218 824 151'}
       role="img"
-      aria-label={company ? 'Nordeste Locações' : 'Nordeste Loc Fest. 15 anos. É tempo de celebrar!'}
+      aria-label={company ? 'Nordeste Locações' : festival ? 'Nordeste Loc Fest' : 'Nordeste Loc Fest. 15 anos. É tempo de celebrar!'}
     >
       <defs>
         <filter id={id} colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" x={company ? 390 : 66} y={company ? 1383 : 218} width={company ? 165 : 824} height={company ? 88 : 151}>

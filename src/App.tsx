@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CalendarDays, Clock3, MapPin, Shirt, X } from 'lucide-react';
 import { OfficialMark } from './components/OfficialMark';
 import { GradientFrame } from './components/GradientFrame';
+import { EventSchedule } from './components/EventSchedule';
 import { event } from './event';
 import { downloadCalendarInvite } from './utils/calendar';
 
@@ -58,6 +59,7 @@ export default function App() {
         </a>
       </section>
       <p className="visually-hidden" role="status">{calendarMessage}</p>
+      <EventSchedule />
       <section id="dress-code" className="dress-section content-width reveal" aria-labelledby="dress-title">
         <Shirt className="dress-icon" aria-hidden="true" />
         <div className="dress-content">

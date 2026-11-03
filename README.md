@@ -14,17 +14,26 @@ Não será permitido o uso de:
 - Camisas de partidos políticos ou de times de futebol.
 - Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.
 
-Acompanhantes, transporte, alimentação, atrações e horário de encerramento não são apresentados como confirmados.
+## Cronograma
+
+| Etapa | Horário |
+| --- | --- |
+| Almoço | 12h30 às 13h45 |
+| Cerimonial | 14h às 15h30 |
+| Banda | 15h30 às 18h30 |
+| Encerramento | 18h30 |
+
+Horários transcritos da arte de programação fornecida pela organização. Acompanhantes, transporte, cardápio e nome da banda não foram informados.
 
 ## Interface
 
-- Seções reais em HTML: apresentação, informações do evento, dress code e mensagem de encerramento.
+- Seções reais em HTML: apresentação, informações do evento, cronograma, dress code e mensagem de encerramento.
 - Textos selecionáveis e layout responsivo; no celular, o local ocupa uma linha própria para melhorar a leitura.
 - Marcas preservadas da arte oficial, exibidas separadamente dos textos e cartões.
 - Ícones vetoriais, cartões translúcidos, contornos e assinatura tipográfica.
 - Animações de entrada ao rolar, brilho suave no fundo, pulsação do ornamento e efeitos de interação.
 - Respeito à preferência de movimento reduzido do dispositivo.
-- O cartão da **data** baixa um arquivo `.ics` para adicionar o evento à agenda, com início às 12h30 de Fortaleza e sem inventar horário de término.
+- O cartão da **data** baixa um arquivo `.ics` para adicionar o evento à agenda, com início às 12h30 e encerramento às 18h30 de Fortaleza, conforme o cronograma.
 - O cartão do **local** abre uma busca pelo estabelecimento no mapa.
 
 Não há formulário de presença, mural, playlist ou painel de dados. A página não coleta dados nem acessa o armazenamento local do navegador.
@@ -68,6 +77,7 @@ Com npm, substitua `bun run` por `npm run`.
 | `src/components/OfficialMark.tsx` | Exibição isolada das marcas oficiais da arte. |
 | `src/utils/calendar.ts` | Geração do convite de calendário. |
 | `src/event.ts` | Informações reais, regras e link do mapa. |
+| `src/components/EventSchedule.tsx` | Card arqueado do cronograma, ícones e ornamentos vetoriais. |
 | `src/components/GradientFrame.tsx` | Ornamentos vetoriais do fundo, sem imagens rasterizadas. |
 | `src/assets/images/nordeste-loc-fest-convite-final.png` | Referência original e origem das marcas. |
 | `index.html` | Metadados e carregamento das fontes. |
