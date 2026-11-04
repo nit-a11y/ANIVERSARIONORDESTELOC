@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Preserve a paleta oficial, inclusive com escurecimento automático do navegador. */
+:root { color-scheme: only light; }
+
 :root { font-family: 'DM Sans', sans-serif; color: #f4f3e4; background: #04364e; font-synthesis: none; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
 body { margin: 0; }
