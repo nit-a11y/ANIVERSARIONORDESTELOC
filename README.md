@@ -7,9 +7,9 @@ Interface do convite da celebração dos 15 anos da **Nordeste Locações**, con
 - **Data:** 27/11/2026, sexta-feira.
 - **Horário:** a partir das 12h30.
 - **Local:** Barraca Gran Royal, Praia do Futuro, Fortaleza/CE.
-- **Dress code:** look confortável e adequado à celebração.
+- **Dress code:** tons claros e suaves, com um look confortável para a celebração.
 
-Não será permitido o uso de:
+Evite:
 
 - Camisas de partidos políticos ou de times de futebol.
 - Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.

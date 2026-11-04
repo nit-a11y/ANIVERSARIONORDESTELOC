@@ -11,7 +11,7 @@ export function downloadCalendarInvite() {
     `DTSTAMP:${stamp}`, 'DTSTART:20261127T153000Z', 'DTEND:20261127T213000Z',
     `SUMMARY:${escapeIcs(`${event.name} · ${event.edition}`)}`,
     `LOCATION:${escapeIcs(`${event.venue}, ${event.address}`)}`,
-    `DESCRIPTION:${escapeIcs(`${event.dressCode}\nNão será permitido o uso de: ${event.prohibitedClothing.join(' ')}`)}`,
+    `DESCRIPTION:${escapeIcs(`${event.dressCode}\nEvite: ${event.prohibitedClothing.join(' ')}`)}`,
     'END:VEVENT', 'END:VCALENDAR', '',
   ];
   // Fold UTF-8 lines at 75 bytes, preserving multibyte characters (RFC 5545).

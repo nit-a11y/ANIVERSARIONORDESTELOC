@@ -25,7 +25,7 @@ export function EventDetails() {
         <div className="location-footnote"><button className="inline-link" onClick={copyLocation}>{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Local copiado' : 'Copiar local do evento'}</button><a className="inline-link" href={officialInvitation} target="_blank" rel="noopener noreferrer">Ver convite oficial <ArrowUpRight size={16} /></a><span role="status">{copyError}</span></div>
         <div id="dress-code" className="dress-card">
           <div className="dress-intro"><div className="dress-icon"><Shirt size={28} /></div><p className="eyebrow">Para aproveitar o momento</p><h3>Vista seu<br /><em>melhor sorriso.</em></h3><p>{event.dressCode}</p><span className="dress-tag">Dress code do evento</span></div>
-          <div className="dress-rules"><p className="eyebrow">Atenção às orientações</p><h4>Não será permitido o uso de:</h4><ul>{event.prohibitedClothing.map((rule, i) => <li key={rule}><span className="rule-number">0{i + 1}</span><span>{rule}</span><X size={18} aria-hidden="true" /></li>)}</ul><p className="dress-note">Venha celebrar com a gente!</p></div>
+          <div className="dress-rules"><p className="eyebrow">Atenção às orientações</p><h4>Evite:</h4><ul>{event.prohibitedClothing.map((rule, i) => <li key={rule}><span className="rule-number">0{i + 1}</span><span>{rule}</span><X size={18} aria-hidden="true" /></li>)}</ul><p className="dress-note">Venha celebrar com a gente!</p></div>
         </div>
       </div>
     </section>

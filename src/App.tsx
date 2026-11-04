@@ -72,7 +72,7 @@ export default function App() {
         <div className="dress-content">
           <h2 id="dress-title">Dress code</h2>
           <p>{event.dressCode}</p>
-          <h3>Não será permitido o uso de:</h3>
+          <h3>Evite:</h3>
           <ul>{event.prohibitedClothing.map(rule => <li key={rule}><span className="prohibition-icon" aria-hidden="true"><X /></span><span>{rule}</span></li>)}</ul>
         </div>
       </section>

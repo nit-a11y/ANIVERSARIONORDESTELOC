@@ -4,7 +4,7 @@ export const event = {
   date: '27/11/2026', dateLabel: '27 de novembro de 2026', weekday: 'Sexta-feira', time: '12h30',
   venue: 'Barraca Gran Royal', address: 'Praia do Futuro, Fortaleza/CE',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Barraca%20Gran%20Royal%2C%20Praia%20do%20Futuro%2C%20Fortaleza%20CE',
-  dressCode: 'O clima é de celebração! Escolha um look confortável e adequado para aproveitar esse momento.',
+  dressCode: 'Escolha um look em tons claros e suaves, confortável para celebrar com a gente.',
   prohibitedClothing: [
     'Camisas de partidos políticos ou de times de futebol.',
     'Roupas de banho, incluindo biquínis, maiôs, sungas e saídas de praia.',
