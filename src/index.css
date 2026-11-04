@@ -244,3 +244,49 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+/* Layout fluido: textos legíveis e blocos que se reorganizam em telas estreitas. */
+.festival-scene { padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); padding-bottom: max(64px, env(safe-area-inset-bottom, 0px)); }
+.content-width, .schedule-section { width: calc(100% - clamp(24px, 6.25cqw, 40px)); }
+.invitation-nav { flex-wrap: wrap; }
+.invitation-nav a { flex: 1 1 100px; min-width: 0; line-height: 1.4; text-align: center; }
+.event-card, .action-button, .dress-content li > span:last-child { overflow-wrap: anywhere; min-width: 0; }
+.calendar-card .fact-main { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.action-button { text-align: center; }
+.schedule-title { white-space: normal; text-align: center; }
+.schedule-title > span { flex-shrink: 1; }
+.schedule-copy h3 { overflow-wrap: normal; }
+.dress-section { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; }
+.dress-icon { float: none; width: 44px; height: 44px; margin: 0; }
+.dress-content h2 { padding-top: 8px; margin-bottom: 28px; }
+.dress-content h2::after { bottom: -10px; width: 72px; }
+.closing-section > p { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .welcome-message .desktop-break { display: none; }
+  .event-section { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .calendar-card .fact-main { font-size: clamp(18px, 5.4cqw, 22px); }
+  .dress-section { padding: clamp(16px, 5cqw, 24px); }
+  .dress-content { display: contents; }
+  .dress-content h2 { align-self: center; padding-top: 0; margin: 0 0 12px; }
+  .dress-content > p, .dress-content h3, .dress-content ul { grid-column: 1 / -1; margin: 0; }
+  .schedule-card { padding-inline: clamp(12px, 4cqw, 20px); }
+  .schedule-item { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
+  .schedule-icon { width: 40px; height: 40px; border-radius: 12px; }
+  .schedule-icon svg { width: 26px; height: 26px; }
+}
+@media (max-width: 359px) {
+  .event-section { grid-template-columns: minmax(0, 1fr); }
+  .event-card + .event-card::before { display: none; }
+  .time-card { border-top: 1px solid #f9efdd80; border-radius: 0; }
+  .event-card { padding: 20px 12px; }
+  .calendar-card .fact-main { font-size: 22px; }
+  .venue-card { padding: 20px 12px; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
+  .venue-card .fact-icon { width: 44px; height: 44px; }
+  .closing-section { margin-inline: 24px; }
+  .closing-section > p { font-size: clamp(26px, 9cqw, 32px); }
+}
+.dress-content h3 { justify-self: start; }
+.schedule-copy h3 { overflow-wrap: anywhere; }
+.closing-section { padding-inline: 8px; }
+@media (max-width: 359px) {
+  .closing-section > p { font-size: clamp(24px, 8cqw, 28px); }
+}
