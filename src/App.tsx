@@ -81,6 +81,17 @@ export default function App() {
         <svg className="signature-stroke" viewBox="0 0 400 35" aria-hidden="true"><path d="M10 27 Q190 -3 389 11 M26 30 Q208 5 373 13 M57 26 Q220 10 341 15" /></svg>
         <OfficialMark company />
       </section>
+      <section className="soundtrack content-width" aria-labelledby="soundtrack-title">
+        <h2 id="soundtrack-title">Trilha sonora do convite</h2>
+        <iframe
+          title="Caraca, Muleke! — Thiaguinho"
+          src="https://www.youtube.com/embed/Cf9yVFyxoJ8?playsinline=1&loop=1&playlist=Cf9yVFyxoJ8"
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+        <a href="https://youtu.be/Cf9yVFyxoJ8" target="_blank" rel="noopener noreferrer">Ouvir no YouTube</a>
+      </section>
       <GradientFrame bottom />
     </main>
   );
