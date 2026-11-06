@@ -57,7 +57,7 @@ export default function App() {
   return (
     <main ref={scene} className="festival-scene" aria-labelledby="invitation-title">
       <GradientFrame />
-      <dialog ref={welcomeDialog} className="welcome-dialog" aria-labelledby="welcome-dialog-title" aria-describedby="welcome-dialog-description">
+      <dialog ref={welcomeDialog} className="welcome-dialog" aria-labelledby="welcome-dialog-title" aria-describedby="welcome-dialog-description" onCancel={event => event.preventDefault()}>
         <span className="welcome-dialog-edition">{event.name} · {event.edition}</span>
         <h2 id="welcome-dialog-title">Junte-se a nós nessa festa!</h2>
         <p id="welcome-dialog-description">Você é nosso convidado para celebrar os 15 anos da Nordeste Locações.</p>
@@ -66,11 +66,8 @@ export default function App() {
           welcomeDialog.current?.close();
         }}>
           <Volume2 aria-hidden="true" />
-          Ativar música
+          Comemore com a gente
         </button>
-        <form method="dialog">
-          <button className="welcome-dialog-skip" type="submit">Continuar sem música</button>
-        </form>
       </dialog>
       <section className="welcome-section" aria-labelledby="invitation-title">
         <h1 id="invitation-title" className="official-heading reveal"><span className="visually-hidden">{event.name} · {event.edition}. É tempo de celebrar!</span><OfficialMark /></h1>

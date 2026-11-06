@@ -65,7 +65,6 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff5dc; outline-offs
 .welcome-dialog h2 { margin: .75rem 0; font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.15; }
 .welcome-dialog p { margin: 0 0 1.25rem; }
 .welcome-dialog .action-button { width: 100%; }
-.welcome-dialog-skip { min-height: 44px; margin-top: .5rem; border: 0; background: transparent; color: inherit; text-decoration: underline; }
 .closing-section > p { font-family: 'Allura', 'Brush Script MT', cursive; font-size: 6.5cqw; line-height: .94; margin: 0; transform: rotate(-7deg); text-shadow: 0 2px 12px #7f361421; }
 .closing-section > p > span { display: inline-block; margin-top: 1.2cqw; }
 .signature-stroke { display: block; width: 39cqw; height: 3.8cqw; margin: .7cqw auto 0; overflow: visible; transform: rotate(-5deg); }
