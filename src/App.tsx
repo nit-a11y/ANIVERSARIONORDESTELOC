@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, CalendarDays, Clock3, MapPin, Music2, Shirt, X } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Clock3, MapPin, Music2, Shirt, Volume2, VolumeX, X } from 'lucide-react';
 import { OfficialMark } from './components/OfficialMark';
 import { GradientFrame } from './components/GradientFrame';
 import { EventSchedule } from './components/EventSchedule';
@@ -8,6 +8,9 @@ import { downloadCalendarInvite } from './utils/calendar';
 
 export default function App() {
   const scene = useRef<HTMLElement>(null);
+  const soundtrack = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [soundtrackError, setSoundtrackError] = useState('');
   const [calendarMessage, setCalendarMessage] = useState('');
   useEffect(() => {
     const root = scene.current;
@@ -28,12 +31,46 @@ export default function App() {
     downloadCalendarInvite();
     setCalendarMessage('Convite baixado. Abra o arquivo para adicionar à sua agenda.');
   }
+  async function toggleSoundtrack() {
+    const audio = soundtrack.current;
+    if (!audio) return;
+
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+
+    setSoundtrackError('');
+    try {
+      await audio.play();
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return;
+      setSoundtrackError('Não foi possível tocar a música. Tente novamente.');
+    }
+  }
   return (
     <main ref={scene} className="festival-scene" aria-labelledby="invitation-title">
       <GradientFrame />
       <section className="welcome-section" aria-labelledby="invitation-title">
         <h1 id="invitation-title" className="official-heading reveal"><span className="visually-hidden">{event.name} · {event.edition}. É tempo de celebrar!</span><OfficialMark /></h1>
         <p className="welcome-message reveal">Você é nosso convidado para viver<br className="desktop-break" /> esse momento especial com a gente!</p>
+        <audio
+          ref={soundtrack}
+          src={`${import.meta.env.BASE_URL}caraca-muleke.mp3`}
+          autoPlay
+          loop
+          onPlaying={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onError={() => {
+            setIsPlaying(false);
+            setSoundtrackError('Não foi possível carregar a música.');
+          }}
+        />
+        <button className="soundtrack-toggle action-button secondary-action" type="button" onClick={toggleSoundtrack}>
+          {isPlaying ? <Volume2 aria-hidden="true" /> : <VolumeX aria-hidden="true" />}
+          {isPlaying ? 'Pausar música' : 'Ativar som'}
+        </button>
+        {soundtrackError && <p role="status">{soundtrackError}</p>}
         <div className="star-divider reveal" aria-hidden="true"><span /><b>✦</b><span /></div>
       </section>
       <nav className="invitation-nav content-width" aria-label="Navegar pelo convite">
@@ -80,17 +117,6 @@ export default function App() {
         <p>Vista seu melhor sorriso<br /><span>e venha celebrar com a gente!</span></p>
         <svg className="signature-stroke" viewBox="0 0 400 35" aria-hidden="true"><path d="M10 27 Q190 -3 389 11 M26 30 Q208 5 373 13 M57 26 Q220 10 341 15" /></svg>
         <OfficialMark company />
-      </section>
-      <section className="soundtrack content-width" aria-labelledby="soundtrack-title">
-        <h2 id="soundtrack-title">Trilha sonora do convite</h2>
-        <iframe
-          title="Caraca, Muleke! — Thiaguinho"
-          src="https://www.youtube.com/embed/Cf9yVFyxoJ8?playsinline=1&loop=1&playlist=Cf9yVFyxoJ8"
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
-        <a href="https://youtu.be/Cf9yVFyxoJ8" target="_blank" rel="noopener noreferrer">Ouvir no YouTube</a>
       </section>
       <GradientFrame bottom />
     </main>

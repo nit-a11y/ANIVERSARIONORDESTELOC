@@ -58,10 +58,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff5dc; outline-offs
 .prohibition-icon { display: grid; place-items: center; flex: 0 0 3.3cqw; height: 3.3cqw; background: #ff8d70; border-radius: 50%; color: #3b2b24; margin-top: -.05cqw; }
 .prohibition-icon svg { width: 2.25cqw; height: 2.25cqw; stroke-width: 2; }
 .closing-section { position: relative; margin-top: 4.7cqw; text-align: center; }
-.soundtrack { position: relative; margin-top: 2rem; text-align: center; }
-.soundtrack h2 { margin: 0 0 .75rem; font-size: 1.15rem; }
-.soundtrack iframe { display: block; width: 100%; min-height: 200px; aspect-ratio: 16 / 9; border: 0; border-radius: .75rem; }
-.soundtrack a { display: inline-block; margin-top: .75rem; color: inherit; text-decoration: underline; }
+.soundtrack-toggle { margin: 1rem auto 0; }
 .closing-section > p { font-family: 'Allura', 'Brush Script MT', cursive; font-size: 6.5cqw; line-height: .94; margin: 0; transform: rotate(-7deg); text-shadow: 0 2px 12px #7f361421; }
 .closing-section > p > span { display: inline-block; margin-top: 1.2cqw; }
 .signature-stroke { display: block; width: 39cqw; height: 3.8cqw; margin: .7cqw auto 0; overflow: visible; transform: rotate(-5deg); }
