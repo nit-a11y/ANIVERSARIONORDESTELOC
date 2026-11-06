@@ -8,10 +8,16 @@ import { downloadCalendarInvite } from './utils/calendar';
 
 export default function App() {
   const scene = useRef<HTMLElement>(null);
+  const welcomeDialog = useRef<HTMLDialogElement>(null);
   const soundtrack = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [soundtrackError, setSoundtrackError] = useState('');
   const [calendarMessage, setCalendarMessage] = useState('');
+  useEffect(() => {
+    const dialog = welcomeDialog.current;
+    if (dialog && !dialog.open) dialog.showModal();
+  }, []);
+
   useEffect(() => {
     const root = scene.current;
     if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -51,13 +57,27 @@ export default function App() {
   return (
     <main ref={scene} className="festival-scene" aria-labelledby="invitation-title">
       <GradientFrame />
+      <dialog ref={welcomeDialog} className="welcome-dialog" aria-labelledby="welcome-dialog-title" aria-describedby="welcome-dialog-description">
+        <span className="welcome-dialog-edition">{event.name} · {event.edition}</span>
+        <h2 id="welcome-dialog-title">Junte-se a nós nessa festa!</h2>
+        <p id="welcome-dialog-description">Você é nosso convidado para celebrar os 15 anos da Nordeste Locações.</p>
+        <button className="action-button primary-action" type="button" onClick={() => {
+          void toggleSoundtrack();
+          welcomeDialog.current?.close();
+        }}>
+          <Volume2 aria-hidden="true" />
+          Ativar música
+        </button>
+        <form method="dialog">
+          <button className="welcome-dialog-skip" type="submit">Continuar sem música</button>
+        </form>
+      </dialog>
       <section className="welcome-section" aria-labelledby="invitation-title">
         <h1 id="invitation-title" className="official-heading reveal"><span className="visually-hidden">{event.name} · {event.edition}. É tempo de celebrar!</span><OfficialMark /></h1>
         <p className="welcome-message reveal">Você é nosso convidado para viver<br className="desktop-break" /> esse momento especial com a gente!</p>
         <audio
           ref={soundtrack}
           src={`${import.meta.env.BASE_URL}caraca-muleke.mp3`}
-          autoPlay
           loop
           onPlaying={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
